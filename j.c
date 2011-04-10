@@ -15,15 +15,24 @@ int main(int argc, const char *argv[])
     {
         array[0][i]= rand()%(M*N);
     }
+    for (i = 0; i < M*N; i++) 
+    {
+         //for (i = 0; i < M; i++) 
+         
+            if (i%10==0) 
+            {
+                printf("\n");
+            }       
+       
+            printf("%5d",array[0][i]);
+       
 
-    //for (j = 0; j < N; j++) 
-    {   
-      //  for (i = 0; i < M; i++) 
-        {
-        //    array[j][i]=j*M+i+1;
-        }
-    }
-   // for (i = 0; i < M*N; i++) 
+       
+     }
+    getchar();
+    printf("执行\n");
+    getchar();
+
     
 
         for (i = 0; i < (M*N-1); i++) 
@@ -45,7 +54,10 @@ int main(int argc, const char *argv[])
     for (i = 0; i < M*N; i++) 
     {
          //for (i = 0; i < M; i++) 
-       
+            if (i%10==0) 
+            {
+                printf("\n");
+            }       
        
             printf("%5d",array[0][i]);
        
