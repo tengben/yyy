@@ -23,7 +23,7 @@ void init_array(int *p,int n)
 void j_game(int *p,int n)
 {
         int i = 0;
-        int interval = 333;
+        int interval = 0;
         int out_counter = 0;
         int out_total = 0; 
         while(out_total < n)

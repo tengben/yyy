@@ -30,7 +30,7 @@ void init_array(int p[],int n)
         srand(time(NULL));
         for (i = 0; i < n; i++) 
         {
-            p[i]=(rand()%200);
+            p[i]=(rand()%20);
         }
 }
 
