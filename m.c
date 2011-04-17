@@ -11,20 +11,43 @@ struct node
 };
 typedef struct node V_NODE;//起个新名字
 V_NODE *create_link(int n);
+V_NODE *delete_link(V_NODE *head);
 V_NODE *add_link(V_NODE *head);
 void print_link(V_NODE *head);
+int get_choice(void);
+void print_list(void);
+
 
 int main(void)
 {
-    V_NODE *head;
-    int n = 0;
-    printf("Input a number\n");
-    scanf("%d",&n);
+    V_NODE *head=NULL;
+    char flag = 0;
+    while (!flag) 
+    {
+        print_list();
+        switch(get_choice())
+        {
+                case 1 : head = add_link(head);break;
+                case 2 : head = delete_link(head);break;
+                case 3 : print_link(head);break;
+                case 4 : flag = 1;break;
+                default: break;
+        }
 
-    head = create_link(n);
-    print_link(head);
-    head = add_link(head); 
-    print_link(head);
+        getchar();
+    }
+    return 0;
+
+
+    //int n = 0;
+    //printf("Input a number\n");
+    //scanf("%d",&n);
+    //head = create_link(n);
+    //print_link(head);
+    //head = delete_link(head);
+    //print_link(head);
+    //head = add_link(head); 
+    //print_link(head);
     //V_NODE stu;//struct node = V_NODE
     //
     //V_NODE *ptr = NULL;
@@ -45,7 +68,26 @@ int main(void)
     //ptr->score = 80;
     //printf("number: %d\tname:%s\tscore:%c\n",ptr->number,ptr->name,ptr->score);
     return 0;
+ }
+int get_choice(void)
+{
+       char choice[20]; 
+       scanf("%s",choice);
+       return atoi(choice);
 }
+
+void print_list(void)
+{
+        printf("Please make a choice\n");
+        printf("1.Add node\n");
+        printf("2.delete node\n");
+        printf("3.print link\n");
+        printf("4.exit\n");
+}
+
+
+
+
 
 V_NODE *create_link(int n)
 {
@@ -114,11 +156,56 @@ V_NODE *add_link(V_NODE *head)
     return head;
 }
 
+V_NODE *delete_link(V_NODE *head)
+{
+    int num = 0;
+    V_NODE *p = head;
+    V_NODE *ptr = NULL;
+    if (head == NULL) 
+    {
+        printf("empty link\n");
+        return NULL;
+    }
+    printf("Please input num of node to delete:\n");
+    scanf("%d",&num);
+    if (num == head->number) 
+    {
+        head = head->next;
+        free(p);
+        return head;
+    }
+    
+    while ((p->next !=NULL) && (p->next->number != num)) 
+    {
+        p = p->next;
+
+    }
+    if (p->next == NULL) 
+    {
+        printf("NO number match!\n");
+
+    }
+    else 
+    {
+        ptr = p->next;
+        p->next = p->next->next;
+        free(ptr);
+    }
+    return head;
+}
+
 void print_link(V_NODE *p)
 {
+    if (p == NULL) 
+    {
+        printf("link empty\n");
+    }
+    printf("student infor\n");
+    printf("number\tname\n");
     while (p != NULL) 
     {
         printf("%d\t%s\n",p->number,p->name);
         p = p->next;
     }
+    printf("\n");
 }
