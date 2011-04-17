@@ -11,6 +11,7 @@ struct node
 };
 typedef struct node V_NODE;//起个新名字
 V_NODE *create_link(int n);
+V_NODE *add_link(V_NODE *head);
 void print_link(V_NODE *head);
 
 int main(void)
@@ -22,7 +23,8 @@ int main(void)
 
     head = create_link(n);
     print_link(head);
-    
+    head = add_link(head); 
+    print_link(head);
     //V_NODE stu;//struct node = V_NODE
     //
     //V_NODE *ptr = NULL;
@@ -60,7 +62,7 @@ V_NODE *create_link(int n)
     strcpy(p->name,"a");
     p->next = NULL;
 
-    for (i = 0; i < n; i++) 
+    for (i = 1; i < n; i++) 
     {
         p->next = malloc(sizeof(V_NODE));
         if (p->next == NULL) 
@@ -74,6 +76,41 @@ V_NODE *create_link(int n)
         p->next->next = NULL;
         p = p->next;
     }
+    return head;
+}
+
+V_NODE *add_link(V_NODE *head)
+{
+    V_NODE *p = NULL;
+    V_NODE *ptr = head;
+    p = malloc(sizeof(V_NODE));
+    if (p == NULL) 
+    {
+        perror("malloc");
+        exit(0);
+    }
+    printf("input number");
+    scanf("%d",&p->number);
+    printf("input name\n");
+    scanf("%s",p->name);
+    p->next = NULL;
+    if(ptr == NULL)
+    {
+        return p;
+    
+    }
+    if (p->number < ptr->number) 
+    {
+        p->next = ptr;
+        head = p;
+        return head;
+    }
+    while ((ptr->next !=NULL)&&(p->number > ptr->next->number)) 
+    {
+        ptr = ptr->next;
+    }
+    p->next = ptr->next;
+    ptr->next = p;
     return head;
 }
 
