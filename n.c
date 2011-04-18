@@ -38,7 +38,7 @@ void sort_array(int *p)
     int j = 0;
     for (i = 0; i < N-1; i++) 
     {
-        if (p[i]>0) 
+        if (p[i]>-1) 
         {
             for (j = i+1; j  < N; j++) 
             {
