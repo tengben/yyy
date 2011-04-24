@@ -16,6 +16,7 @@ V_NODE *add_link(V_NODE *head);
 void print_link(V_NODE *head);
 int get_choice(void);
 void print_list(void);
+void print_word(void);
 
 void save_link(V_NODE *p)
 {
@@ -90,6 +91,7 @@ int main(void)
 {
     V_NODE *head=NULL;
     int  flag = 0;
+    print_word();
     
     head = load_link();
     while (!flag) 
