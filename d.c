@@ -11,15 +11,15 @@ int main(void)
     int array[N];
 
     init_array(array,N);
-printf("original:\n");
+    //printf("original:\n");
     print_array(array,N);
-printf("press enter to start...\n");
-getchar();
+    //printf("press enter to start...\n");
+//getchar();
 //    bubble_array(array,N);
-    quick_sort(array,0,N-1);
-printf("finished,press enter to list:\n");
-getchar();
-    print_array(array,N);
+//quick_sort(array,0,N-1);
+//printf("finished,press enter to list:\n");
+//getchar();
+//print_array(array,N);
     return 0;
 
 }
@@ -30,7 +30,7 @@ void init_array(int p[],int n)
         srand(time(NULL));
         for (i = 0; i < n; i++) 
         {
-            p[i]=(rand()%20);
+            p[i]=(rand()%100);
         }
 }
 

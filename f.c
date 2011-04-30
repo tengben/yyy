@@ -4,7 +4,8 @@ int main(int argc, const char *argv[])
 {
     char str[20]="This is a C world!";
     char c_str[20];
-    char *p = str;
+    char *p;
+    p = str;
     char *p_c = c_str;
     for(p=str;*p !='\0';p++)
     {

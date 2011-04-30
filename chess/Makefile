@@ -1,6 +1,6 @@
 #this is for link
 
-scr=bb.c init_op.c basic_shapes.c print_board.c mouse_op.c chess_op.c
+scr=main.c init_op.c basic_shapes.c print_board.c mouse_op.c chess_op.c
 para=-o main -Wall
 main:$(scr)
 		gcc $(scr) $(para)

@@ -6,7 +6,7 @@
 #include<sys/mman.h>
 #include<string.h>
 #include<unistd.h>
-#include"bb.h"
+#include"main.h"
 
 fbscr_t fb_v;
 extern char chess_board[B_Y*B_X];

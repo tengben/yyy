@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include"bb.h"
+#include"main.h"
 extern int mx;
 extern int my;
 char flag =0;

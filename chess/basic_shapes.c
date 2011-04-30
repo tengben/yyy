@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include"bb.h"
+#include"main.h"
 
 void swap(int *a ,int *b)
 {

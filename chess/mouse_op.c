@@ -2,7 +2,7 @@
 #include<unistd.h>
 #include<fcntl.h>
 #include<stdlib.h>
-#include"bb.h"
+#include"main.h"
 
 extern fbscr_t fb_v;//声明
 
