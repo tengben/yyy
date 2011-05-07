@@ -7,7 +7,7 @@ int main(int argc, const char *argv[])
     char str[100];
     int number = 0;
     printf("Please input a string:\n");
-    scanf("%s,str");
+    fgets(str,1024,stdin);
     number = string_to_number(str);
     if(number == -1)
     {
