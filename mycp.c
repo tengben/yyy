@@ -1,42 +1,40 @@
 #include<stdio.h>
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<fcntl.h>
+#include<unistd.h>
+#include<errno.h>
 #include<stdlib.h>
-int mycp(char *src,char *dest)
+int main(int argc, char *argv[])
 {
-    FILE *fps,*fpd;
-    int size;
-    char buf[4096];
-
-    fps = fopen(src,"rb");
-    if(fps == NULL)
+    int fd_src,fd_dst;
+    int n;
+    char buf[2048];
+    if(argc !=3)//命令行参数3个
     {
-        printf("open %s fail\n",src);
-        return (-1);
-    }
-    fpd = fopen(dest,"wb");
-    if(fps == NULL)
-    {
-        printf("open %s fail\n",dest);
-        return (-1);
-    
-    }
-    while(size = fread(buf,1,4096,fps))
-            fwrite(buf,1,size,fpd);
-
-    fclose(fps);
-    fclose(fpd);
-    return 0;
-}
-
-int main(int argc,char *argv[])
-{
-    if(argc != 3)
-    {
-        printf("mycp \n");
+        printf("Usage:%s[source file][dest file]\n",argv[0]);
         exit(1);
-        
     }
-    mycp(argv[1],argv[2]);
-    printf("sucess\n");
-    return 0;
+    fd_src = open(argv[1],O_RDONLY);
+    if(fd_src < 0)
+    {
+        perror("open file error:");
+        exit(1);
+    }
+
+    fd_dst = open(argv[2],O_WRONLY|O_TRUNC|O_CREAT,0644);
+    if(fd_dst < 0)
+    {
+        perror("open file error:");
+        exit(1);
+    }
+
+    while((n = read(fd_src,buf,1024)))
+    {
+        write(fd_dst,buf,n);
     
+    }
+    close(fd_src);
+    close(fd_dst);
+    return 0;
 }
