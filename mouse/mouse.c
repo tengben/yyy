@@ -3,8 +3,6 @@
 int mouse_test(pinfo_t fb)
 {
 	int fd;
-	if((fd = mouse_open("/dev/input/mice"))<0)
-	{
 		fprintf(stderr, "Error mouse open:%s\n", 
 				strerror(errno));
 		exit(1);
@@ -34,6 +32,15 @@ int mouse_test(pinfo_t fb)
 
 			m_x += mevent.dx;
 			m_y += mevent.dy;
+
+            if(m_x < 0)
+                m_x = 0;
+            if(m_x > (fb.w - C_WIDTH-1))
+                m_x = fb.w - C_WIDTH-1;
+            if(m_y < 0)
+                m_y = 0;
+            if(m_y > (fb.h - C_HEIGHT-1))
+                m_y = fb.h - C_HEIGHT-1;
 
 			mouse_draw(fb, m_x, m_y);
 			printf("mx=%d\tmy=%d\n", m_x, m_y);
